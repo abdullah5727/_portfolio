@@ -1,0 +1,154 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  /* Changed to solid blue background immediately as requested */
+  background: #0ea5e9; 
+  box-shadow: 0 2px 20px rgba(14, 165, 233, 0.3);
+}
+
+.nav.scrolled {
+  /* Slightly darker blue or same blue with shadow on scroll */
+  background: #0284c7; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 0.8rem 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* Changed to White to contrast with blue bg */
+  color: #ffffff; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  /* Changed to White */
+  color: #ffffff; 
+  cursor: pointer;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+  opacity: 0.9;
+}
+
+.nav.scrolled .nav-links li button {
+  color: #ffffff;
+}
+
+.nav-links li button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ffffff; /* Underline is now white */
+  transition: width 0.3s ease;
+}
+
+.nav-links li button:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.nav-links li button:hover::after {
+  width: 100%;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 2px;
+  /* Changed hamburger lines to white */
+  background: #ffffff; 
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    /* Keep mobile menu white for readability, or change to blue if preferred */
+    background: rgba(255, 255, 255, 0.98); 
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    gap: 1.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Since the mobile menu dropdown is white, we revert the text links to dark inside the mobile menu only */
+  .nav-links li button {
+    color: #334155; 
+  }
+  
+  .nav-links li button::after {
+    background: #0ea5e9;
+  }
+  
+  .nav-links li button:hover {
+    color: #0ea5e9;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links li button {
+    font-size: 1.1rem;
+  }
+}

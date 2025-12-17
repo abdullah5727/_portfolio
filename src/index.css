@@ -1,0 +1,70 @@
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #0f172a;
+  overflow-x: hidden;
+  background: transparent; /* IMPORTANT */
+}
+
+/* ===== BUBBLE BACKGROUND LAYER ===== */
+.bg-bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(6px 6px at 10% 20%, rgba(14,165,233,.35) 50%, transparent 51%),
+    radial-gradient(8px 8px at 30% 70%, rgba(14,165,233,.25) 50%, transparent 51%),
+    radial-gradient(4px 4px at 50% 40%, rgba(14,165,233,.4) 50%, transparent 51%),
+    radial-gradient(7px 7px at 70% 80%, rgba(14,165,233,.2) 50%, transparent 51%),
+    radial-gradient(5px 5px at 85% 30%, rgba(14,165,233,.3) 50%, transparent 51%),
+    linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  background-size: 100% 100%;
+  animation: floatBubbles 25s linear infinite;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes floatBubbles {
+  from {
+    transform: translateY(0);
+    background-position: 0 0;
+  }
+  to {
+    transform: translateY(-120px);
+    background-position: 0 400px;
+  }
+}
+
+/* ===== APP ROOT ===== */
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ===== GLOBAL ELEMENTS ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
